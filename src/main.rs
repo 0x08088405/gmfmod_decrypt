@@ -6,9 +6,14 @@ use std::{
     io::{self, BufRead, Write},
 };
 
-fn decrypt(data: &mut [u8], hash1: &[u8], hash2: &[u8]) {
+fn decrypt(data: &mut Vec<u8>, hash1: &[u8], hash2: &[u8]) {
     for (i, byte) in data.iter_mut().enumerate() {
         *byte = *byte ^ hash2[i % hash2.len()] ^ hash1[i % hash1.len()];
+    }
+
+    let extra_len = hash1.len() + "FMODSIMPLEPW".len();
+    if data.len() > extra_len {
+        data.truncate(data.len() - extra_len);
     }
 }
 
