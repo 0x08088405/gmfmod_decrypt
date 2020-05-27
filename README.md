@@ -21,3 +21,5 @@ $ gmfmod_decrypt very_secure_password sound1.wav sound2.wav sound3.wav ...
 ```
 $ gmfmod_decrypt very_secure_password *.wav
 ```
+
+All of these would create `sound1-decrypted.wav`, etc.
